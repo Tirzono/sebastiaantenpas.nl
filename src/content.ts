@@ -76,7 +76,7 @@ export const experience: Entry[] = [
     organisation: 'Aston Martin F1',
     place: 'Silverstone, United Kingdom',
     description:
-      'Built and maintained post-processing and visualisation tools for the aerodynamics department, including an in-house visualisation tool I developed from scratch. Introduced CI/CD pipelines and code quality standards, and mentored junior colleagues and new starters.',
+      'Developed the aerodynamics department’s post-processing and visualisation software, including an in-house visualisation tool I created from scratch. Raised the team’s engineering standards, from automated delivery to code quality, and helped grow the developers around me.',
     tags: ['Python', 'TypeScript', 'Rust', 'Go', 'Django', 'React', 'WebGL'],
   },
   {
