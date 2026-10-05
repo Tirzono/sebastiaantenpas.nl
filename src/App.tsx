@@ -1,4 +1,6 @@
+import { useEffect, useRef } from 'react'
 import Flow from './Flow.tsx'
+import Glyph from './Glyph.tsx'
 import {
   education,
   experience,
@@ -12,17 +14,48 @@ import {
 
 const year = new Date().getFullYear()
 
+// Marks entries as they scroll into view: the line draws down to them and
+// their glyph starts animating. Glyphs pause again once off screen.
+function useInView() {
+  const ref = useRef<HTMLOListElement>(null)
+  useEffect(() => {
+    const list = ref.current
+    if (!list) return
+    const items = list.querySelectorAll('li.entry')
+    list.classList.add('ready')
+    const observer = new IntersectionObserver(
+      (records) => {
+        for (const record of records) {
+          record.target.classList.toggle('playing', record.isIntersecting)
+          if (record.isIntersecting) record.target.classList.add('seen')
+        }
+      },
+      { rootMargin: '0px 0px -15% 0px' },
+    )
+    items.forEach((item) => observer.observe(item))
+    return () => observer.disconnect()
+  }, [])
+  return ref
+}
+
 function Timeline({ entries }: { entries: Entry[] }) {
+  const ref = useInView()
   return (
-    <ol className="timeline">
+    <ol className="timeline" ref={ref}>
       {entries.map((entry) => (
-        <li key={`${entry.organisation} ${entry.period}`}>
+        <li className="entry" key={`${entry.organisation} ${entry.period}`}>
+          <Glyph kind={entry.glyph} />
           <p className="period">{entry.period}</p>
           <h3>
             {entry.title} <span className="at">at</span> {entry.organisation}
           </h3>
           {entry.place && <p className="place">{entry.place}</p>}
           {entry.description && <p>{entry.description}</p>}
+          {entry.link && (
+            <p>
+              <a href={entry.link.url}>{entry.link.label}</a>
+            </p>
+          )}
           {entry.tags && (
             <ul className="tags">
               {entry.tags.map((tag) => (
