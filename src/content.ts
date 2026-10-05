@@ -1,57 +1,120 @@
-// Everything the page says lives here, so updating the site means editing this
-// file only. Lines marked TODO are placeholders: rewrite them in your own words.
+// Everything the page says lives here, so updating the CV means editing this
+// file only. Text in [square brackets] and lines marked TODO are placeholders.
 
 export const profile = {
   name: 'Sebastiaan ten Pas',
-  // TODO: your role, in a few words.
-  tagline: 'Developer at Diggi Media',
+  headline: 'Software engineer with a background in fluid dynamics',
   location: 'United Kingdom',
-  avatar: 'https://avatars.githubusercontent.com/u/8750041?s=320',
+  portrait: '/portrait.jpg',
 }
 
-// TODO: a short introduction, one paragraph per entry.
-export const about = [
-  'I build web applications and the infrastructure they run on, from Django and React front to back, down to the Kubernetes clusters and Terraform that host them.',
-  'Through Diggi Media I help businesses get their websites and web apps built and running.',
+// TODO: check this reads like you, especially the last sentence.
+export const intro = [
+  'I studied mechanical engineering at the University of Twente, specialising in computational fluid dynamics, and then turned the code into the main event. At Aston Martin F1 I built the post-processing and visualisation tools that turn simulations and wind tunnel data into something aerodynamicists can see.',
+  'Alongside that I run Diggi Media, building websites and apps for small businesses, and I enjoy looking after the infrastructure they run on.',
 ]
 
-export type Project = {
-  name: string
-  description: string
-  url: string
-  tags: string[]
+export type Entry = {
+  period: string
+  title: string
+  organisation: string
+  place?: string
+  description?: string
+  tags?: string[]
 }
 
-// Public repositories only. Add or reorder as you like.
-export const projects: Project[] = [
+export const experience: Entry[] = [
   {
-    name: 'helm-charts',
-    description:
-      'A multi-chart Helm repository, published to GitHub Pages and as OCI charts on GHCR on every merge.',
-    url: 'https://github.com/Tirzono/helm-charts',
-    tags: ['Helm', 'Kubernetes'],
+    // TODO: your current role at Cambridge, taken from your LinkedIn headline.
+    period: '[Start date] – present',
+    title: '[Role]',
+    organisation: 'University of Cambridge',
+    place: 'Cambridge, United Kingdom',
+    description: '[A sentence or two about what you do there.]',
   },
   {
-    name: 'docker-images',
+    // TODO: set the end date if you have left.
+    period: 'April 2019 – [end date]',
+    title: 'Senior CFD Software Developer',
+    organisation: 'Aston Martin F1',
+    place: 'Silverstone, United Kingdom',
     description:
-      'Container images published to GHCR, such as GitHub Actions runners with the extras CI jobs need.',
-    url: 'https://github.com/Tirzono/docker-images',
-    tags: ['Docker', 'CI'],
+      'Built and maintained post-processing and visualisation tools for the aerodynamics department, including an in-house visualisation tool I developed from scratch. Introduced CI/CD pipelines and code quality standards, and mentored junior colleagues and new starters.',
+    tags: ['Python', 'TypeScript', 'Rust', 'Go', 'Django', 'React', 'WebGL'],
   },
   {
-    name: 'github-actions',
-    description: 'Reusable composite GitHub Actions shared across my projects.',
-    url: 'https://github.com/Tirzono/github-actions',
-    tags: ['GitHub Actions'],
+    period: 'March 2017 – March 2019',
+    title: 'Software Engineer',
+    organisation: 'Patchman',
+    place: 'Enschede, the Netherlands',
+    description:
+      'Worked on internal back-end services and the Django web applications used by staff, customers and their end users. Later also Scrum Master for a small team of developers.',
+    tags: ['Python', 'Django', 'Vue.js', 'PostgreSQL', 'Docker'],
   },
   {
-    name: 'sebastiaantenpas.nl',
+    period: 'September 2013 – present',
+    title: 'Founder and Digital Director',
+    organisation: 'Diggi Media',
+    place: 'Enschede, the Netherlands',
     description:
-      'This website: React, TypeScript and Vite on Cloudflare Pages, with the infrastructure in Terraform.',
-    url: 'https://github.com/Tirzono/sebastiaantenpas.nl',
-    tags: ['React', 'Cloudflare'],
+      'Websites and mobile apps for small businesses, from WordPress sites to containerised web applications in the cloud. I also handle the finances and keep in touch with clients.',
+    tags: ['Python', 'TypeScript', 'React', 'Kubernetes', 'Terraform'],
+  },
+  {
+    period: 'September 2015 – June 2016',
+    title: 'Graduate intern',
+    organisation: 'NLR, Netherlands Aerospace Centre',
+    place: 'Amsterdam, the Netherlands',
+    description:
+      "Validated NLR's CFD methods for wind turbine flows against the MEXICO wind tunnel experiments, which led to the paper below.",
+  },
+  {
+    period: 'April 2015 – July 2015',
+    title: 'Intern',
+    organisation: 'MARIN, Maritime Research Institute Netherlands',
+    place: 'Wageningen, the Netherlands',
+    description:
+      'Studied how near-wall grid resolution with wall functions affects RANS predictions of resistance and flow around a KVLCC2 tanker.',
+  },
+  {
+    period: 'February 2011 – December 2014',
+    title: 'Web Application Developer',
+    organisation: 'Takeaway.com',
+    place: 'Enschede, the Netherlands',
+    description:
+      'Started in customer care and moved into development, building internal tools such as one that cut data entry time by more than 92% and was used across the company.',
   },
 ]
+
+export const education: Entry[] = [
+  {
+    period: '2013 – 2016',
+    title: 'MSc Mechanical Engineering',
+    organisation: 'University of Twente',
+    description: 'Specialisation in Engineering Fluid Dynamics.',
+  },
+  {
+    period: '2009 – 2013',
+    title: 'BSc Mechanical Engineering',
+    organisation: 'University of Twente',
+    description: 'Minor in Applied Mathematics.',
+  },
+]
+
+export const publications = [
+  {
+    title: 'Wind Turbine Aerodynamics from an Aerospace Perspective',
+    venue: 'AIAA Wind Energy Symposium, 2018',
+    authors: 'A. van Garrel, S. ten Pas, C. H. Venner, J. van Muijden',
+    url: 'https://doi.org/10.2514/6.2018-0991',
+  },
+]
+
+export const skills = {
+  programming: ['Python', 'TypeScript', 'Rust', 'Go', 'PHP', 'SQL', 'Bash'],
+  tools: ['Django', 'React', 'WebGL', 'PostgreSQL', 'Docker', 'Kubernetes', 'Terraform'],
+  languages: ['Dutch (native)', 'English (full professional)'],
+}
 
 export type Link = {
   label: string
@@ -59,8 +122,8 @@ export type Link = {
 }
 
 export const links: Link[] = [
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/sebastiaantenpas/' },
   { label: 'GitHub', url: 'https://github.com/Tirzono' },
-  { label: 'Diggi Media', url: 'https://www.diggimedia.nl' },
-  // TODO: add LinkedIn or others, or remove the email if you'd rather not list it.
+  // TODO: the address you want people to use.
   { label: 'Email', url: 'mailto:sebastiaan@diggimedia.nl' },
 ]
