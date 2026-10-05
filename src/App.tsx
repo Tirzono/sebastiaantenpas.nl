@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import Journey from './Journey.tsx'
 import Glyph from './Glyph.tsx'
 import Morph from './Morph.tsx'
+import ThemeToggle from './ThemeToggle.tsx'
 import {
   education,
   experience,
@@ -87,6 +88,7 @@ function Timeline({ entries }: { entries: Entry[] }) {
 function App() {
   return (
     <>
+      <ThemeToggle />
       <header className="hero">
         <Journey />
         <div className="hero-text">
