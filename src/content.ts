@@ -3,13 +3,13 @@
 
 export const profile = {
   name: 'Sebastiaan ten Pas',
-  headline: 'Full-stack software engineer and team lead',
+  headline: 'Full-stack software engineer, team and tech lead',
   location: 'United Kingdom',
   portrait: '/portrait.jpg',
 }
 
 export const intro = [
-  "I'm a full-stack software engineer with a strong mathematical background. I lead two development teams at the University of Cambridge, looking after undergraduate admissions and education services, and alongside that I run Diggi Media, building websites and apps for small businesses.",
+  "I'm a full-stack software engineer with a strong mathematical background. At the University of Cambridge I'm a hands-on team and tech lead for two development teams, looking after undergraduate admissions and education services, and alongside that I run Diggi Media, building websites and apps for small businesses.",
   'I studied mechanical engineering, which is how I spent five years writing visualisation tools for the aerodynamicists at Aston Martin F1. These days the only things flowing are CI pipelines.',
 ]
 
@@ -53,7 +53,7 @@ export const experience: Entry[] = [
     organisation: 'University of Cambridge',
     place: 'University Information Services, DevOps Division',
     description:
-      'Lead the Hopper and Hamilton teams. Hopper builds and runs undergraduate admissions, including My Cambridge Application and Digital Pooling; Hamilton looks after education services such as teaching space scheduling, lab allocation and lecture capture preferences.',
+      'Team and tech lead for the Hopper and Hamilton teams, staying hands-on in the code and the architecture. Hopper builds and runs undergraduate admissions, including My Cambridge Application and Digital Pooling; Hamilton looks after education services such as teaching space scheduling, lab allocation and lecture capture preferences.',
     link: { label: 'My work on the University’s GitLab', url: 'https://gitlab.developers.cam.ac.uk/st981' },
   },
   {

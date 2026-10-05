@@ -15,8 +15,9 @@
   background: var(--paper);
 }
 
+/* Dark colours follow the system unless the theme toggle picked one */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --paper: #121614;
     --ink: #ece8df;
     --muted: #a39d91;
@@ -24,6 +25,62 @@
     --accent: #6fd6ae;
     --marker: #8a6a12;
   }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #121614;
+  --ink: #ece8df;
+  --muted: #a39d91;
+  --line: #2a302c;
+  --accent: #6fd6ae;
+  --marker: #8a6a12;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1.5px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--accent);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--accent);
+}
+
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+.theme-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle .filled {
+  fill: currentColor;
+  stroke: none;
 }
 
 body {
@@ -748,6 +805,7 @@ footer {
 
   .journey,
   .morph-rail,
+  .theme-toggle,
   .tags,
   h2::after {
     display: none;
