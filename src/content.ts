@@ -9,7 +9,7 @@ export const profile = {
 }
 
 export const intro = [
-  "I'm a full-stack software engineer with a strong mathematical background. I manage the team behind the University of Cambridge's undergraduate admissions web applications, and alongside that I run Diggi Media, building websites and apps for small businesses.",
+  "I'm a full-stack software engineer with a strong mathematical background. I lead two development teams at the University of Cambridge, looking after undergraduate admissions and education services, and alongside that I run Diggi Media, building websites and apps for small businesses.",
   'I studied mechanical engineering, which is how I spent five years writing visualisation tools for the aerodynamicists at Aston Martin F1. These days the only things flowing are CI pipelines.',
 ]
 
@@ -18,7 +18,6 @@ export type GlyphKind =
   | 'form'
   | 'key'
   | 'airfoil'
-  | 'chart'
   | 'shield'
   | 'browser'
   | 'turbine'
@@ -27,10 +26,18 @@ export type GlyphKind =
   | 'cap'
   | 'sigma'
 
+// A step within one organisation, for promotions that share the same work.
+export type Role = {
+  title: string
+  period: string
+}
+
 export type Entry = {
   glyph: GlyphKind
   period: string
-  title: string
+  // Either a single title, or the roles held there in order (newest first).
+  title?: string
+  roles?: Role[]
   organisation: string
   place?: string
   description?: string
@@ -46,7 +53,7 @@ export const experience: Entry[] = [
     organisation: 'University of Cambridge',
     place: 'University Information Services, DevOps Division',
     description:
-      'Manage the combined Hopper and Hamilton team, which builds and runs the web applications behind undergraduate admissions.',
+      'Lead the Hopper and Hamilton teams. Hopper builds and runs undergraduate admissions, including My Cambridge Application and Digital Pooling; Hamilton looks after education services such as teaching space scheduling, lab allocation and lecture capture preferences.',
     link: { label: 'My work on the University’s GitLab', url: 'https://gitlab.developers.cam.ac.uk/st981' },
   },
   {
@@ -61,20 +68,16 @@ export const experience: Entry[] = [
   },
   {
     glyph: 'airfoil',
-    period: 'April 2021 – July 2024',
-    title: 'Senior CFD Software Developer',
+    period: 'April 2019 – July 2024',
+    roles: [
+      { title: 'Senior CFD Software Developer', period: 'April 2021 – July 2024' },
+      { title: 'CFD Software Developer', period: 'April 2019 – April 2021' },
+    ],
     organisation: 'Aston Martin F1',
     place: 'Silverstone, United Kingdom',
     description:
       'Built and maintained post-processing and visualisation tools for the aerodynamics department, including an in-house visualisation tool I developed from scratch. Introduced CI/CD pipelines and code quality standards, and mentored junior colleagues and new starters.',
     tags: ['Python', 'TypeScript', 'Rust', 'Go', 'Django', 'React', 'WebGL'],
-  },
-  {
-    glyph: 'chart',
-    period: 'April 2019 – April 2021',
-    title: 'CFD Software Developer',
-    organisation: 'Aston Martin F1',
-    place: 'Silverstone, United Kingdom',
   },
   {
     glyph: 'shield',
@@ -93,7 +96,7 @@ export const experience: Entry[] = [
     organisation: 'Diggi Media',
     place: 'Enschede, the Netherlands',
     description:
-      'Websites and mobile apps for small businesses, from WordPress sites to containerised web applications in the cloud. I also handle the finances and keep in touch with clients.',
+      'Websites and mobile apps for small businesses, from WordPress sites to containerised web applications in the cloud.',
     tags: ['Python', 'TypeScript', 'React', 'Kubernetes', 'Terraform'],
   },
   {

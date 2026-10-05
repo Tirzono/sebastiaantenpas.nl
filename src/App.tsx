@@ -46,9 +46,23 @@ function Timeline({ entries }: { entries: Entry[] }) {
         <li className="entry" key={`${entry.organisation} ${entry.period}`}>
           <Glyph kind={entry.glyph} />
           <p className="period">{entry.period}</p>
-          <h3>
-            {entry.title} <span className="at">at</span> {entry.organisation}
-          </h3>
+          {entry.roles ? (
+            <>
+              <h3>{entry.organisation}</h3>
+              <ol className="roles">
+                {entry.roles.map((role) => (
+                  <li key={role.title}>
+                    <span className="role">{role.title}</span>
+                    <span className="role-period">{role.period}</span>
+                  </li>
+                ))}
+              </ol>
+            </>
+          ) : (
+            <h3>
+              {entry.title} <span className="at">at</span> {entry.organisation}
+            </h3>
+          )}
           {entry.place && <p className="place">{entry.place}</p>}
           {entry.description && <p>{entry.description}</p>}
           {entry.link && (
