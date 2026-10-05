@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import Flow from './Flow.tsx'
+import Journey from './Journey.tsx'
 import Glyph from './Glyph.tsx'
 import {
   education,
@@ -73,7 +73,7 @@ function App() {
   return (
     <>
       <header className="hero">
-        <Flow />
+        <Journey />
         <div className="hero-text">
           <h1>
             Sebastiaan <span className="marker">ten Pas</span>

@@ -9,21 +9,21 @@ export const profile = {
 }
 
 export const intro = [
-  "I'm a full-stack software engineer with a strong mathematical background. I manage a team of developers in the DevOps Division at the University of Cambridge, and alongside that I run Diggi Media, building websites and apps for small businesses.",
+  "I'm a full-stack software engineer with a strong mathematical background. I manage the team behind the University of Cambridge's undergraduate admissions web applications, and alongside that I run Diggi Media, building websites and apps for small businesses.",
   'I studied mechanical engineering, which is how I spent five years writing visualisation tools for the aerodynamicists at Aston Martin F1. These days the only things flowing are CI pipelines.',
 ]
 
 // The small animated illustration next to each entry, drawn in Glyph.tsx.
 export type GlyphKind =
-  | 'branches'
-  | 'terminal'
+  | 'form'
+  | 'key'
   | 'airfoil'
   | 'chart'
   | 'shield'
   | 'browser'
   | 'turbine'
   | 'boat'
-  | 'stopwatch'
+  | 'pizza'
   | 'cap'
   | 'sigma'
 
@@ -40,23 +40,23 @@ export type Entry = {
 
 export const experience: Entry[] = [
   {
-    glyph: 'branches',
+    glyph: 'form',
     period: 'October 2025 – present',
     title: 'Software Developer Manager',
     organisation: 'University of Cambridge',
     place: 'University Information Services, DevOps Division',
     description:
-      'Lead a team of developers in the division that builds and runs many of the University’s IT services, and help shape the shared standards in its public guidebook.',
-    link: { label: 'DevOps guidebook', url: 'https://guidebook.devops.uis.cam.ac.uk/' },
+      'Manage the combined Hopper and Hamilton team, which builds and runs the web applications behind undergraduate admissions.',
+    link: { label: 'My work on the University’s GitLab', url: 'https://gitlab.developers.cam.ac.uk/st981' },
   },
   {
-    glyph: 'terminal',
+    glyph: 'key',
     period: 'July 2024 – November 2025',
     title: 'Senior Software Developer',
     organisation: 'University of Cambridge',
     place: 'University Information Services, DevOps Division',
     description:
-      'Built services and shared tooling on Google Cloud: account activation and identity services, Python libraries, Terraform modules, GitLab CI templates and the Django application template the division starts new projects from.',
+      'Developer in the Wilson team, responsible for identity and access management across the University, from account activation to the services and libraries around it.',
     tags: ['Python', 'Django', 'Terraform', 'Google Cloud', 'GitLab CI'],
   },
   {
@@ -115,13 +115,13 @@ export const experience: Entry[] = [
       'Studied how near-wall grid resolution with wall functions affects RANS predictions of resistance and flow around a KVLCC2 tanker.',
   },
   {
-    glyph: 'stopwatch',
+    glyph: 'pizza',
     period: 'February 2011 – December 2014',
     title: 'Web Application Developer',
     organisation: 'Takeaway.com',
     place: 'Enschede, the Netherlands',
     description:
-      'Started in customer care and moved into development, building internal tools such as one that cut data entry time by more than 92% and was used across the company.',
+      'Started in customer care and moved into development, proposing and building internal tools that automated much of the data entry and were rolled out across the company.',
   },
 ]
 

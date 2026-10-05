@@ -5,22 +5,21 @@ import type { GlyphKind } from './content.ts'
 // index.css under .glyph-<kind> and only run while the entry is on screen.
 
 const glyphs: Record<GlyphKind, ReactNode> = {
-  // Commits on two branches that merge back: managing a team's work.
-  branches: (
+  // An application form being ticked off: undergraduate admissions.
+  form: (
     <>
-      <path d="M7 8v8" />
-      <path d="M8.7 7c3.5.6 7 1.6 7.6 3.3M16.3 13.7c-.6 1.7-4.1 2.7-7.6 3.3" />
-      <circle className="commit" cx="7" cy="6" r="1.9" />
-      <circle className="commit" cx="17" cy="12" r="1.9" />
-      <circle className="commit" cx="7" cy="18" r="1.9" />
+      <path d="M6 3h9l4 4v14H6z" />
+      <path d="M15 3v4h4" />
+      <path className="draw" d="m8.5 11 1.5 1.5 3-3" />
+      <path d="M8.5 16.5h7" />
     </>
   ),
-  // A prompt with a blinking cursor.
-  terminal: (
+  // A key with a pulse in its bow: identity and access management.
+  key: (
     <>
-      <rect x="3" y="5" width="18" height="14" rx="2.5" />
-      <path d="m7 10 3 2.5L7 15" />
-      <path className="cursor" d="M12.5 15h4" />
+      <circle cx="8" cy="12" r="4" />
+      <path d="M12 12h9M18 12v3M15 12v2" />
+      <circle className="ping" cx="8" cy="12" r="1" />
     </>
   ),
   // An aerofoil with air moving over it.
@@ -76,12 +75,14 @@ const glyphs: Record<GlyphKind, ReactNode> = {
       <path className="waves" d="M-4 20.5q2-1.6 4 0t4 0 4 0 4 0 4 0 4 0 4 0 4 0" />
     </>
   ),
-  // A stopwatch: the tool that cut data entry time by 92%.
-  stopwatch: (
+  // A slice of pizza, still steaming.
+  pizza: (
     <>
-      <circle cx="12" cy="13.5" r="7" />
-      <path d="M10 3.5h4M12 3.5v3" />
-      <path className="hand" d="M12 13.5V9" />
+      <path d="M5 8q7-4 14 0l-7 13z" />
+      <path d="M6.3 10.4q5.7-3 11.4 0" />
+      <circle cx="10.4" cy="11.6" r="0.7" />
+      <circle cx="13.4" cy="12.4" r="0.7" />
+      <path className="steam" d="M10 5c-1-1 1-1.6 0-3M14 5c-1-1 1-1.6 0-3" />
     </>
   ),
   // A graduation cap with a swinging tassel.
