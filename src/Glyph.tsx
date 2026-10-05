@@ -30,15 +30,6 @@ const glyphs: Record<GlyphKind, ReactNode> = {
       <path className="stream" d="M2 18c6 1 13 0 20-3" />
     </>
   ),
-  // Bars of a chart growing: post-processing and visualisation.
-  chart: (
-    <>
-      <path d="M4 20h16" />
-      <path className="bar" d="M7 20v-6" />
-      <path className="bar" d="M12 20V7" />
-      <path className="bar" d="M17 20v-9" />
-    </>
-  ),
   // A shield with a tick: patching vulnerabilities.
   shield: (
     <>

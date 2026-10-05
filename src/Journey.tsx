@@ -149,7 +149,7 @@ const chapters: Chapter[] = [
     extra: <circle className="ping" cx="35" cy="50" r="3.5" />,
   },
   {
-    name: 'Cambridge, admissions',
+    name: 'Cambridge, education',
     year: '2025',
     enter: [10, 50],
     exit: [90, 50],
