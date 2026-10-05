@@ -407,44 +407,6 @@ h2::after {
     no-repeat center / contain;
 }
 
-/* The drawing line sits in the left margin beside the timeline, on
-   screens wide enough to have one. */
-.history {
-  position: relative;
-}
-
-.trace-rail {
-  display: none;
-}
-
-@media (min-width: 72rem) {
-  .trace-rail {
-    display: block;
-    position: absolute;
-    top: 4.5rem;
-    bottom: 0;
-    right: calc(100% + 3rem);
-    width: 10rem;
-  }
-}
-
-.trace {
-  position: sticky;
-  top: calc(45vh - 5rem);
-  width: 10rem;
-  height: 10rem;
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-}
-
-.trace path {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.85;
-}
-
 .timeline {
   list-style: none;
   margin: 0;
@@ -805,7 +767,6 @@ footer {
   }
 
   .journey,
-  .trace-rail,
   .theme-toggle,
   .tags,
   h2::after {
