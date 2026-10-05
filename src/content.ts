@@ -3,37 +3,64 @@
 
 export const profile = {
   name: 'Sebastiaan ten Pas',
-  headline: 'Software engineer with a background in fluid dynamics',
+  headline: 'Full-stack software engineer and team lead',
   location: 'United Kingdom',
   portrait: '/portrait.jpg',
 }
 
 export const intro = [
-  'I studied mechanical engineering at the University of Twente, specialising in computational fluid dynamics, and then turned the code into the main event. I spent five years at Aston Martin F1 building the post-processing and visualisation tools that turn simulations and wind tunnel data into something aerodynamicists can see, and I now manage software developers at the University of Cambridge.',
-  'Alongside that I run Diggi Media, building websites and apps for small businesses, and I enjoy looking after the infrastructure they run on.',
+  "I'm a full-stack software engineer with a strong mathematical background. I manage a team of developers in the DevOps Division at the University of Cambridge, and alongside that I run Diggi Media, building websites and apps for small businesses.",
+  'I studied mechanical engineering, which is how I spent five years writing visualisation tools for the aerodynamicists at Aston Martin F1. These days the only things flowing are CI pipelines.',
 ]
 
+// The small animated illustration next to each entry, drawn in Glyph.tsx.
+export type GlyphKind =
+  | 'branches'
+  | 'terminal'
+  | 'airfoil'
+  | 'chart'
+  | 'shield'
+  | 'browser'
+  | 'turbine'
+  | 'boat'
+  | 'stopwatch'
+  | 'cap'
+  | 'sigma'
+
 export type Entry = {
+  glyph: GlyphKind
   period: string
   title: string
   organisation: string
   place?: string
   description?: string
+  link?: { label: string; url: string }
   tags?: string[]
 }
 
 export const experience: Entry[] = [
   {
+    glyph: 'branches',
     period: 'October 2025 – present',
     title: 'Software Developer Manager',
     organisation: 'University of Cambridge',
+    place: 'University Information Services, DevOps Division',
+    description:
+      'Lead a team of developers in the division that builds and runs many of the University’s IT services, and help shape the shared standards in its public guidebook.',
+    link: { label: 'DevOps guidebook', url: 'https://guidebook.devops.uis.cam.ac.uk/' },
   },
   {
+    glyph: 'terminal',
     period: 'July 2024 – November 2025',
     title: 'Senior Software Developer',
     organisation: 'University of Cambridge',
+    place: 'University Information Services, DevOps Division',
+    description:
+      'Built services and shared tooling on Google Cloud: account activation and identity services, Python libraries, Terraform modules, GitLab CI templates and the Django application template the division starts new projects from.',
+    tags: ['Python', 'Django', 'Terraform', 'Google Cloud', 'GitLab CI'],
   },
   {
+    glyph: 'airfoil',
     period: 'April 2021 – July 2024',
     title: 'Senior CFD Software Developer',
     organisation: 'Aston Martin F1',
@@ -43,12 +70,14 @@ export const experience: Entry[] = [
     tags: ['Python', 'TypeScript', 'Rust', 'Go', 'Django', 'React', 'WebGL'],
   },
   {
+    glyph: 'chart',
     period: 'April 2019 – April 2021',
     title: 'CFD Software Developer',
     organisation: 'Aston Martin F1',
     place: 'Silverstone, United Kingdom',
   },
   {
+    glyph: 'shield',
     period: 'March 2017 – March 2019',
     title: 'Software Engineer',
     organisation: 'Patchman',
@@ -58,6 +87,7 @@ export const experience: Entry[] = [
     tags: ['Python', 'Django', 'Vue.js', 'PostgreSQL', 'Docker'],
   },
   {
+    glyph: 'browser',
     period: 'September 2013 – present',
     title: 'Founder and Digital Director',
     organisation: 'Diggi Media',
@@ -67,6 +97,7 @@ export const experience: Entry[] = [
     tags: ['Python', 'TypeScript', 'React', 'Kubernetes', 'Terraform'],
   },
   {
+    glyph: 'turbine',
     period: 'September 2015 – June 2016',
     title: 'Graduate intern',
     organisation: 'NLR, Netherlands Aerospace Centre',
@@ -75,6 +106,7 @@ export const experience: Entry[] = [
       "Validated NLR's CFD methods for wind turbine flows against the MEXICO wind tunnel experiments, which led to the paper below.",
   },
   {
+    glyph: 'boat',
     period: 'April 2015 – July 2015',
     title: 'Intern',
     organisation: 'MARIN, Maritime Research Institute Netherlands',
@@ -83,6 +115,7 @@ export const experience: Entry[] = [
       'Studied how near-wall grid resolution with wall functions affects RANS predictions of resistance and flow around a KVLCC2 tanker.',
   },
   {
+    glyph: 'stopwatch',
     period: 'February 2011 – December 2014',
     title: 'Web Application Developer',
     organisation: 'Takeaway.com',
@@ -94,12 +127,14 @@ export const experience: Entry[] = [
 
 export const education: Entry[] = [
   {
+    glyph: 'cap',
     period: '2013 – 2016',
     title: 'MSc Mechanical Engineering',
     organisation: 'University of Twente',
     description: 'Specialisation in Engineering Fluid Dynamics.',
   },
   {
+    glyph: 'sigma',
     period: '2009 – 2013',
     title: 'BSc Mechanical Engineering',
     organisation: 'University of Twente',
@@ -118,7 +153,16 @@ export const publications = [
 
 export const skills = {
   programming: ['Python', 'TypeScript', 'Rust', 'Go', 'PHP', 'SQL', 'Bash'],
-  tools: ['Django', 'React', 'WebGL', 'PostgreSQL', 'Docker', 'Kubernetes', 'Terraform'],
+  tools: [
+    'Django',
+    'React',
+    'PostgreSQL',
+    'Docker',
+    'Kubernetes',
+    'Terraform',
+    'Google Cloud',
+    'Cloudflare',
+  ],
   languages: ['Dutch (native)', 'English (full professional)'],
 }
 
