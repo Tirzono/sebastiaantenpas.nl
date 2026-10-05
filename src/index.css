@@ -407,41 +407,52 @@ h2::after {
     no-repeat center / contain;
 }
 
-/* The morphing drawing sits in the left margin beside the timeline, on
-   screens wide enough to have one. */
-.history {
-  position: relative;
+/* The story strip: one drawing travelling left to right as you scroll */
+.story {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 3.5rem 0 0;
+  overflow: visible;
 }
 
-.morph-rail {
-  display: none;
-}
-
-@media (min-width: 72rem) {
-  .morph-rail {
-    display: block;
-    position: absolute;
-    top: 4.5rem;
-    bottom: 0;
-    right: calc(100% + 3rem);
-    width: 10rem;
-  }
-}
-
-.morph {
-  position: sticky;
-  top: calc(45vh - 5rem);
-  width: 10rem;
-  height: 10rem;
-}
-
-.morph path {
+.story path {
   fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.4;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.8;
+}
+
+.story .road {
+  stroke: var(--line);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 6;
+}
+
+.story .trail {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  opacity: 0.45;
+}
+
+.story .figure {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.story text {
+  text-anchor: middle;
+}
+
+.story .name {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.story .year {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  fill: var(--muted);
 }
 
 .timeline {
@@ -804,7 +815,7 @@ footer {
   }
 
   .journey,
-  .morph-rail,
+  .story,
   .theme-toggle,
   .tags,
   h2::after {
