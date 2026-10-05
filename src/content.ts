@@ -1,5 +1,5 @@
 // Everything the page says lives here, so updating the CV means editing this
-// file only. Text in [square brackets] and lines marked TODO are placeholders.
+// file only.
 
 export const profile = {
   name: 'Sebastiaan ten Pas',
@@ -8,9 +8,8 @@ export const profile = {
   portrait: '/portrait.jpg',
 }
 
-// TODO: check this reads like you, especially the last sentence.
 export const intro = [
-  'I studied mechanical engineering at the University of Twente, specialising in computational fluid dynamics, and then turned the code into the main event. At Aston Martin F1 I built the post-processing and visualisation tools that turn simulations and wind tunnel data into something aerodynamicists can see.',
+  'I studied mechanical engineering at the University of Twente, specialising in computational fluid dynamics, and then turned the code into the main event. I spent five years at Aston Martin F1 building the post-processing and visualisation tools that turn simulations and wind tunnel data into something aerodynamicists can see, and I now manage software developers at the University of Cambridge.',
   'Alongside that I run Diggi Media, building websites and apps for small businesses, and I enjoy looking after the infrastructure they run on.',
 ]
 
@@ -25,22 +24,29 @@ export type Entry = {
 
 export const experience: Entry[] = [
   {
-    // TODO: your current role at Cambridge, taken from your LinkedIn headline.
-    period: '[Start date] – present',
-    title: '[Role]',
+    period: 'October 2025 – present',
+    title: 'Software Developer Manager',
     organisation: 'University of Cambridge',
-    place: 'Cambridge, United Kingdom',
-    description: '[A sentence or two about what you do there.]',
   },
   {
-    // TODO: set the end date if you have left.
-    period: 'April 2019 – [end date]',
+    period: 'July 2024 – November 2025',
+    title: 'Senior Software Developer',
+    organisation: 'University of Cambridge',
+  },
+  {
+    period: 'April 2021 – July 2024',
     title: 'Senior CFD Software Developer',
     organisation: 'Aston Martin F1',
     place: 'Silverstone, United Kingdom',
     description:
       'Built and maintained post-processing and visualisation tools for the aerodynamics department, including an in-house visualisation tool I developed from scratch. Introduced CI/CD pipelines and code quality standards, and mentored junior colleagues and new starters.',
     tags: ['Python', 'TypeScript', 'Rust', 'Go', 'Django', 'React', 'WebGL'],
+  },
+  {
+    period: 'April 2019 – April 2021',
+    title: 'CFD Software Developer',
+    organisation: 'Aston Martin F1',
+    place: 'Silverstone, United Kingdom',
   },
   {
     period: 'March 2017 – March 2019',
@@ -124,6 +130,5 @@ export type Link = {
 export const links: Link[] = [
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/sebastiaantenpas/' },
   { label: 'GitHub', url: 'https://github.com/Tirzono' },
-  // TODO: the address you want people to use.
-  { label: 'Email', url: 'mailto:sebastiaan@diggimedia.nl' },
+  { label: 'Email', url: 'mailto:info@sebastiaantenpas.nl' },
 ]
