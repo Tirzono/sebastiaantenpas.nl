@@ -350,6 +350,43 @@ h2::after {
     no-repeat center / contain;
 }
 
+/* The morphing drawing sits in the left margin beside the timeline, on
+   screens wide enough to have one. */
+.history {
+  position: relative;
+}
+
+.morph-rail {
+  display: none;
+}
+
+@media (min-width: 72rem) {
+  .morph-rail {
+    display: block;
+    position: absolute;
+    top: 4.5rem;
+    bottom: 0;
+    right: calc(100% + 3rem);
+    width: 10rem;
+  }
+}
+
+.morph {
+  position: sticky;
+  top: calc(45vh - 5rem);
+  width: 10rem;
+  height: 10rem;
+}
+
+.morph path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.8;
+}
+
 .timeline {
   list-style: none;
   margin: 0;
@@ -378,19 +415,6 @@ h2::after {
   border-radius: 1px;
   background: var(--line);
   transform-origin: top;
-}
-
-/* A drop travelling down the line, like a particle in the flow */
-.timeline > li:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: calc(var(--glyph) / 2 - 3px);
-  top: calc(var(--glyph) + 0.3rem);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: 0;
 }
 
 .timeline .glyph {
@@ -507,10 +531,6 @@ h2::after {
     transform: scaleY(1);
   }
 
-  .timeline > li.playing::after {
-    animation: drop 3.5s ease-in infinite 1.5s;
-  }
-
   .glyph * {
     transform-box: view-box;
     animation-play-state: paused !important;
@@ -573,21 +593,6 @@ h2::after {
   .glyph-cap .tassel {
     transform-origin: 21.5px 9px;
     animation: swing 2.4s ease-in-out infinite;
-  }
-}
-
-@keyframes drop {
-  0% {
-    top: calc(var(--glyph) + 0.3rem);
-    opacity: 0;
-  }
-  10%,
-  80% {
-    opacity: 0.8;
-  }
-  100% {
-    top: calc(100% - 0.6rem);
-    opacity: 0;
   }
 }
 
@@ -742,6 +747,7 @@ footer {
   }
 
   .journey,
+  .morph-rail,
   .tags,
   h2::after {
     display: none;
@@ -758,8 +764,7 @@ footer {
     transform: none !important;
   }
 
-  .headline::after,
-  .timeline > li::after {
+  .headline::after {
     display: none;
   }
 }

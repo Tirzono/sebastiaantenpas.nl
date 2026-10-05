@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import Journey from './Journey.tsx'
 import Glyph from './Glyph.tsx'
+import Morph from './Morph.tsx'
 import {
   education,
   experience,
@@ -104,15 +105,18 @@ function App() {
           ))}
         </section>
 
-        <section aria-labelledby="experience">
-          <h2 id="experience">Experience</h2>
-          <Timeline entries={experience} />
-        </section>
+        <div className="history">
+          <Morph />
+          <section aria-labelledby="experience">
+            <h2 id="experience">Experience</h2>
+            <Timeline entries={experience} />
+          </section>
 
-        <section aria-labelledby="education">
-          <h2 id="education">Education</h2>
-          <Timeline entries={education} />
-        </section>
+          <section aria-labelledby="education">
+            <h2 id="education">Education</h2>
+            <Timeline entries={education} />
+          </section>
+        </div>
 
         <section aria-labelledby="publications">
           <h2 id="publications">Publication</h2>
