@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
+import { useSyncExternalStore, type CSSProperties, type ReactNode } from 'react'
 import { profile } from './content.ts'
 
 // One line that draws itself from the first year at university to today,
@@ -180,16 +180,16 @@ const ROW = 124
 const INK_TIME = 0.55
 const LINK_TIME = 0.25
 
-// Wide screens get the whole journey on one line; narrower ones wrap it.
+// Wide screens get the whole journey on one line; narrower ones wrap it. The
+// prerendered page uses the wide layout and narrower screens switch on hydration.
+const pick = () => (window.innerWidth >= 960 ? 11 : window.innerWidth >= 600 ? 6 : 4)
+const onResize = (update: () => void) => {
+  window.addEventListener('resize', update)
+  return () => window.removeEventListener('resize', update)
+}
+
 function useColumns() {
-  const pick = () => (window.innerWidth >= 960 ? 11 : window.innerWidth >= 600 ? 6 : 4)
-  const [columns, setColumns] = useState(pick)
-  useEffect(() => {
-    const update = () => setColumns(pick())
-    window.addEventListener('resize', update)
-    return () => window.removeEventListener('resize', update)
-  }, [])
-  return columns
+  return useSyncExternalStore(onResize, pick, () => 11)
 }
 
 function Journey() {

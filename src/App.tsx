@@ -150,7 +150,8 @@ function App() {
             </li>
           ))}
         </ul>
-        <p className="copyright">
+        {/* The build year is prerendered; the visitor's year replaces it on hydration. */}
+        <p className="copyright" suppressHydrationWarning>
           © {year} {profile.name}
         </p>
       </footer>

@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useSyncExternalStore, type ReactNode } from 'react'
 
 // Cycles between following the system, light and dark. The choice is kept in
 // localStorage and applied as data-theme on <html>; index.html applies it
@@ -39,20 +39,33 @@ const icons: Record<Theme, ReactNode> = {
   dark: <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />,
 }
 
-function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(stored)
+// Kept in memory too, so the toggle works when storage is unavailable.
+let current: Theme | undefined
+const snapshot = () => (current ??= stored())
+const listeners = new Set<() => void>()
+const subscribe = (listener: () => void) => {
+  listeners.add(listener)
+  return () => listeners.delete(listener)
+}
 
-  useEffect(() => {
-    const root = document.documentElement
-    if (theme === 'auto') root.removeAttribute('data-theme')
-    else root.setAttribute('data-theme', theme)
-    try {
-      if (theme === 'auto') localStorage.removeItem('theme')
-      else localStorage.setItem('theme', theme)
-    } catch {
-      // Storage can be unavailable (private mode); the toggle still works.
-    }
-  }, [theme])
+function apply(theme: Theme) {
+  current = theme
+  const root = document.documentElement
+  if (theme === 'auto') root.removeAttribute('data-theme')
+  else root.setAttribute('data-theme', theme)
+  try {
+    if (theme === 'auto') localStorage.removeItem('theme')
+    else localStorage.setItem('theme', theme)
+  } catch {
+    // Storage can be unavailable (private mode); the toggle still works.
+  }
+  listeners.forEach((listener) => listener())
+}
+
+function ThemeToggle() {
+  // The prerendered page always shows 'auto'; the saved choice is picked up
+  // once hydrated so the markup matches what was prerendered.
+  const theme = useSyncExternalStore(subscribe, snapshot, () => 'auto' as const)
 
   return (
     <button
@@ -60,7 +73,7 @@ function ThemeToggle() {
       className="theme-toggle"
       aria-label={labels[theme]}
       title={labels[theme]}
-      onClick={() => setTheme(next[theme])}
+      onClick={() => apply(next[theme])}
     >
       <svg viewBox="0 0 24 24" aria-hidden="true">
         {icons[theme]}
